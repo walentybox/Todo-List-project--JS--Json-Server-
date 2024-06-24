@@ -15,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const baseUrl = "http://localhost:3000/";
   const headers = { "Content-Type": "application/json" };
 
-
-
   async function useFetch(url, method = "GET", data = null) {
     try {
       const response = await fetch(url, {
@@ -34,30 +32,24 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
     }
   }
+
   function bindEvents(elements, eventName, callback) {
     elements.forEach((element) => {
       element.addEventListener(eventName, callback);
     });
   }
 
-
   async function loadJson() {
-
-    console.log(baseUrl + "posts");
     const data = await useFetch(baseUrl + "posts");
-    console.log(data);
     renderItems(data);
   }
 
-
   function renderItems(items) {
-	console.log(items)
     items.forEach((item) => {
       id = item.id;
       let task = document.createElement("li");
       task.setAttribute("data-id", id);
       task.innerHTML = `<input id ="checkbox-${id}" class="checkbox" type ="checkbox" checked><label for="checkbox-${id}"></label><p id ="${id}">${item.post}</p> <div class="li-btns"><button type="submit" class="class-btn-edite">Edit</button> <button type="submit" class="class-btn-delete">Delete</button></div>`;
-
 
       if (item.checked == "true") {
         incomplTasksList.append(task);
@@ -65,19 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
         complTasksList.append(task);
       }
     });
-    console.log("function renderItems");
   }
 
   function createItem(e) {
     e.preventDefault();
-    let instaFormData = new FormData(instaForm);
     useFetch(baseUrl + "posts", "POST", {
       post: inputTask.value,
       checked: "true",
     });
-
-    useFetch(baseUrl + "posts", "POST", instaFormData);
-    console.log("function createItem");
   }
 
   btnCreateTask.addEventListener("click", createItem);
@@ -85,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function eventDelete() {
     const btnsDelete = document.getElementsByClassName("class-btn-delete");
     const spread = [...btnsDelete];
+
     bindEvents(spread, "click", (e) => {
       if (e.target) {
         e.preventDefault();
@@ -92,11 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
           e.target.parentElement.previousElementSibling.getAttribute("id");
         e.target.parentElement.parentElement.remove();
         useFetch(baseUrl + `posts/${id}`, "DELETE");
-
         deleteKeyLocalStorage(e.target);
       }
     });
-    console.log("function eventDelete");
   }
 
   function deleteKeyLocalStorage(key) {
@@ -118,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.style.overflow = "hidden";
       window.scrollTo(0, 0);
     });
-    console.log("function editEvent");
   }
 
   const closePopup = document.querySelector(".popup__close");
@@ -126,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
   closePopup.addEventListener("click", () => {
     popup.classList.remove("popup__activedisplay");
     document.body.style.overflow = "";
-    console.log("closePopup");
   });
 
   btnSavePopup.addEventListener("click", () => {
@@ -141,21 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
         checked: "false",
       });
     }
-    console.log("btnSavePopup");
   });
-
-  async function putData(url = baseUrl, data = {}) {
-    const response = await fetch(url, {
-      method: "PUT",
-      headers,
-      body: JSON.stringify(data),
-    });
-    return await response.json();
-  }
 
   function storage() {
     const check = document.getElementsByClassName("checkbox");
-    console.log(check);
 
     [...check].forEach((el) => {
       for (let i = 0; i < localStorage.length; i++) {
@@ -236,8 +209,5 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(function () {
       return changeDbJson();
-    })
-    .then(function () {
-      console.log("Done!");
     });
 });

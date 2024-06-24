@@ -2,7 +2,7 @@
   "posts": [
     {
       "post": "Hello 1",
-      "checked": "false",
+      "checked": "true",
       "id": 1
     },
     {
@@ -12,12 +12,12 @@
     },
     {
       "post": "Hello 3",
-      "checked": "false",
+      "checked": "true",
       "id": 3
     },
     {
       "post": "Hello 4",
-      "checked": "true",
+      "checked": "false",
       "id": 4
     },
     {
@@ -26,7 +26,7 @@
       "id": 5
     },
     {
-      "post": "Hello 6",
+      "post": "sdv",
       "checked": "true",
       "id": 6
     }
