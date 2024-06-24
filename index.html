@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Todo List</title>
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+	<main>
+		<div class="wrapper">
+			<div class="container">
+
+				<h1>Todo List</h1>
+				<form method="POST" id="post-pic" enctype="multipart/form-data">
+					<div class="todo-box" id="upload">
+						<h2>Add Item</h2>
+						<div class="todo-box__container">
+							<input type="text" id="textField" class="todo-box__input" />
+							<button type="submit" form="upload" class="todo-box__btn-create-task">Add</button>
+						</div>
+					</div>
+				</form>
+
+				<div class="all-incomplete-tasks todo-box">
+					<h2>Todo</h2>
+					<ol class="all-incomplete-tasks__list task__list"></ol>
+				</div>
+
+				<div class="all-completed-tasks todo-box">
+					<h2>Completed</h2>
+					<ol class="all-complete-tasks__list task__list"></ol>
+				</div>
+
+				<div class="popup">
+					<div class="popup__close">
+						<img src="/assets/icons/close.svg" alt="close icon" />
+					</div>
+					<div class="popup__box">
+						<label class="popup__label">Change your post:</label>
+						<input class="popup__input" type="text" />
+						<button type="submit" class="popup__btn-save">Save</button>
+					</div>
+				</div>
+	</main>
+
+	<script src="/js/main.js"></script>
+</body>
+
+</html>

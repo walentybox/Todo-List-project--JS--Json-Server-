@@ -1,0 +1,34 @@
+{
+  "posts": [
+    {
+      "post": "Hello 1",
+      "checked": "false",
+      "id": 1
+    },
+    {
+      "post": "Hello 2",
+      "checked": "true",
+      "id": 2
+    },
+    {
+      "post": "Hello 3",
+      "checked": "false",
+      "id": 3
+    },
+    {
+      "post": "Hello 4",
+      "checked": "true",
+      "id": 4
+    },
+    {
+      "post": "Hello 5",
+      "checked": "false",
+      "id": 5
+    },
+    {
+      "post": "Hello 6",
+      "checked": "true",
+      "id": 6
+    }
+  ]
+}
